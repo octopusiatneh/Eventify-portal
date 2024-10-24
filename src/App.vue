@@ -1,91 +1,66 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from '@/modules/dashboard/components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <VApp>
+    <AppHeader />
+    <VMain>
+      <RouterView />
+    </VMain>
+  </VApp>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import AppHeader from '@/core/components/app/AppHeader.vue';
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<!-- This should generally be the only global CSS in the app. -->
+<style lang="scss">
+// ===
+// Vendor
+// ===
+.v-application {
+  /*
+    HTML editor adds a paragraph element to list items (<li><p/></li>).
+    Remove margin from paragraphs that are direct and only child of list items.
+  */
+  & li > p:only-child {
+    margin: 0;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .v-field--disabled {
+    @apply opacity-60;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .v-card__title {
+    word-break: break-word;
   }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+  .v-img__img {
+    width: inherit;
+  }
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+  a:not(.v-btn) {
+    @apply text-primary;
+  }
+
+  .v-card-title {
+    @apply py-4;
+  }
+
+  input[readonly] {
+    @apply text-neutral-500;
+  }
+
+  .material-icons:not(.v-icon--size-default) {
+    font-size: inherit;
+  }
+
+  .v-icon-action {
+    font-size: inherit;
+    @apply text-neutral-500;
+  }
+
+  .v-selection-control__input > .v-icon {
+    @apply text-neutral-500;
   }
 }
 </style>
