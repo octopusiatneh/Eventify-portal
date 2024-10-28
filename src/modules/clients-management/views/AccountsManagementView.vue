@@ -1,29 +1,27 @@
 <template>
-  <!--  <AppPageTitle title="Accounts Management" />-->
-  <VLayout class="height-screen">
-    <VRow>
-      <VCol cols="12" class="px-8 pt-6">
-        <VDataTableServer
-          :items="items"
-          :items-length="totalItems"
-          :loading="loading"
-          :height="height"
-          item-value="name"
-          items-per-page-text="Accounts per page:"
-          :header-props="headerProps"
-          @update:options="fetchItems"
-        >
-          <template #top>
-            <VRow class="mx-1 my-3" justify="end">
-              <VBtn v-if="true" color="primary" class="my-auto">
-                Create new
-              </VBtn>
-            </VRow>
-          </template>
-        </VDataTableServer>
-      </VCol>
-    </VRow>
-  </VLayout>
+  <AppPageTitle title="Accounts Management" />
+  <VRow>
+    <VCol cols="12" class="px-8 pt-6">
+      <VDataTableServer
+        :items="items"
+        :items-length="totalItems"
+        :loading="loading"
+        :height="height"
+        item-value="name"
+        items-per-page-text="Accounts per page:"
+        :header-props="headerProps"
+        @update:options="fetchItems"
+      >
+        <template #top>
+          <VRow class="mx-1 my-3" justify="end">
+            <VBtn v-if="true" color="primary" class="my-auto">
+              Create new
+            </VBtn>
+          </VRow>
+        </template>
+      </VDataTableServer>
+    </VCol>
+  </VRow>
 </template>
 
 <script setup lang="ts">
