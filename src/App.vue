@@ -9,14 +9,11 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppHeader from '@/core/components/app/AppHeader.vue';
+import AppHeader from '@/core/components/AppHeader.vue';
 </script>
 
 <!-- This should generally be the only global CSS in the app. -->
 <style lang="scss">
-// ===
-// Vendor
-// ===
 .v-application {
   /*
     HTML editor adds a paragraph element to list items (<li><p/></li>).

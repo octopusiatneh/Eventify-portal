@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/modules/dashboard/views/HomeView.vue'
-import UserLoginView from './modules/auth/views/UserLoginView.vue'
+import ClientsManagementView from '@/modules/clients-management/views/AccountsManagementView.vue'
 
-const CallbackPage = () => import('@/core/views/CallbackView.vue')
+const CallbackView = () => import('@/core/views/CallbackView.vue')
+const EndpointsManagementView = () =>
+  import('@/modules/endpoints-management/views/EndpointsManagementView.vue')
+const UserLoginView = () => import('./modules/auth/views/UserLoginView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,12 +17,22 @@ const router = createRouter({
     {
       path: '/',
       name: '',
-      component: HomeView,
+      redirect: 'clients-management',
+    },
+    {
+      path: '/clients-management',
+      name: 'clients-management',
+      component: ClientsManagementView,
+    },
+    {
+      path: '/endpoints-management',
+      name: 'endpoints-management',
+      component: EndpointsManagementView,
     },
     {
       path: '/callback',
       name: 'callback',
-      component: CallbackPage,
+      component: CallbackView,
     },
   ],
 })
