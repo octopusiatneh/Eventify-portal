@@ -2,7 +2,7 @@ import '@/assets/styles/main.css'
 import { createAuth0 } from '@auth0/auth0-vue'
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/router'
 // vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -44,5 +44,5 @@ const vuetify = createVuetify({
   },
 })
 const app = createApp(App)
-app.use(vuetify).use(router).use(auth0)
+app.use(auth0).use(vuetify).use(router)
 app.mount('#app')

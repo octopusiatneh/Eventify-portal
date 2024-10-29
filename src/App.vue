@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppHeader from '@/core/components/AppHeader.vue';
+import AppHeader from '@/core/components/AppHeader.vue'
 </script>
 
 <!-- This should generally be the only global CSS in the app. -->

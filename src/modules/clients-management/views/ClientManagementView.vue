@@ -1,41 +1,45 @@
 <template>
-  <AppPageTitle title="Accounts Management" />
-  <VRow>
-    <VCol cols="12" class="px-8 pt-6">
-      <VDataTableServer
-        :items="items"
-        :items-length="totalItems"
-        :loading="loading"
-        :height="height"
-        item-value="name"
-        items-per-page-text="Accounts per page:"
-        :header-props="headerProps"
-        @update:options="fetchItems"
-      >
-        <template #top>
-          <VRow class="mx-1 my-3" justify="end">
-            <VBtn v-if="true" color="primary" class="my-auto">
-              Create new
-            </VBtn>
-          </VRow>
-        </template>
-      </VDataTableServer>
-    </VCol>
-  </VRow>
+  <div class="flex-column">
+    <AppPageTitle title="Clients Management" />
+    <VDataTableServer
+      :items="items"
+      :items-length="totalItems"
+      :loading="loading"
+      :header-props="headerProps"
+      :height="height"
+      item-value="name"
+      @update:options="fetchItems"
+      class="px-8"
+    >
+      <template #loading>
+        <VSkeletonLoader type="table-row@25" />
+      </template>
+      
+      <template #top>
+        <VRow class="mx-1 my-3" justify="end">
+          <VBtn color="primary" class="my-auto" @click="onClick">
+            Create new
+          </VBtn>
+        </VRow>
+      </template>
+    </VDataTableServer>
+  </div>
 </template>
 
 <script setup lang="ts">
 import type { StyleValue } from 'vue'
 import AppPageTitle from '@/core/components/AppPageTitle.vue'
 import { ref } from 'vue'
-
-const loading = ref(true)
+import router from '@/router/router'
 
 const items = ref([])
 const totalItems = ref(0)
 
-const height = ref(window.innerHeight - 170)
+const loading = ref(true)
+const height = ref(window.innerHeight - 219)
 const headerProps = { style: { 'font-size': '0.75rem' } satisfies StyleValue }
+
+const onClick = () => router.push({ name: 'client-create' })
 
 const fetchItems = () => {
   loading.value = true

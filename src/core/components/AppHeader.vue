@@ -1,5 +1,5 @@
 <template>
-  <VAppBar density="compact" color="primary">
+  <VAppBar density="compact" color="primary" class="d-flex flex-0-1">
     <VToolbarTitle>
       <VImg
         height="40"
@@ -10,27 +10,8 @@
     </VToolbarTitle>
     <VSpacer />
     <VToolbarItems>
-      <VBtn
-        v-for="btn in buttons"
-        :key="btn.name"
-        :to="btn.route"
-        variant="text"
-      >
-        {{ btn.name }}
-      </VBtn>
+      <VBtn :to="{ name: 'clients-management' }" variant="text"> Clients </VBtn>
+      <VBtn :to="{ name: 'endpoints-management' }" variant="text"> Endpoints </VBtn>
     </VToolbarItems>
   </VAppBar>
 </template>
-
-<script setup lang="ts">
-const buttons = [
-  {
-    name: 'Clients',
-    route: 'clients-management',
-  },
-  {
-    name: 'Endpoints',
-    route: 'endpoints-management',
-  },
-]
-</script>

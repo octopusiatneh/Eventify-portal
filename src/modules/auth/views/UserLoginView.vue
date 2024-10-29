@@ -33,7 +33,7 @@
                 data-cy="login-btn-login"
                 color="primary"
                 variant="flat"
-                @click="handleLogin()"
+                @click="login()"
               >
                 Log in
               </VBtn>
@@ -46,8 +46,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuth } from '@/core/composables/useAuth0'
+import { useAuth0 } from '@auth0/auth0-vue'
 
-const { login } = useAuth()
-const handleLogin = login
+const { loginWithRedirect } = useAuth0()
+const login = () =>
+  loginWithRedirect({
+    appState: {
+      target: '',
+    },
+  })
 </script>
