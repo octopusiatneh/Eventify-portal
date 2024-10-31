@@ -9,6 +9,4 @@ import AppPageTitle from '@/core/components/AppPageTitle.vue'
 import { useAuth0 } from '@auth0/auth0-vue'
 
 const { isAuthenticated } = useAuth0()
-
-console.log(isAuthenticated.value)
 </script>

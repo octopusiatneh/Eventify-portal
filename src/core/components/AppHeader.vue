@@ -9,9 +9,17 @@
       />
     </VToolbarTitle>
     <VSpacer />
-    <VToolbarItems>
+    <VToolbarItems v-if="isAuthenticated">
       <VBtn :to="{ name: 'clients-management' }" variant="text"> Clients </VBtn>
-      <VBtn :to="{ name: 'endpoints-management' }" variant="text"> Endpoints </VBtn>
+      <VBtn>
+        <VIcon icon="mdi-account"></VIcon>
+      </VBtn>
     </VToolbarItems>
   </VAppBar>
 </template>
+
+<script setup lang="ts">
+import { useAuth0 } from '@auth0/auth0-vue'
+
+const { isAuthenticated } = useAuth0()
+</script>

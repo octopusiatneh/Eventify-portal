@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import ClientsManagementView from '@/modules/clients-management/views/ClientManagementView.vue'
-import { authGuard } from '@auth0/auth0-vue'
 
 const UserLoginView = () => import('@/modules/auth/views/UserLoginView.vue')
 const ClientCreateView = () =>
@@ -27,7 +26,6 @@ const router = createRouter({
       path: '/clients-management',
       name: 'clients-management',
       component: ClientsManagementView,
-      beforeEnter: authGuard,
     },
     {
       path: '/clients-management/create',
